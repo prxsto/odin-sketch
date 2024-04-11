@@ -1,16 +1,18 @@
 #grid-container {
     display: flex;
-    /* align-items: center;*/
+    align-items: stretch;
+    align-content: stretch;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .pixel {
-    flex: auto;
     margin: 0;
     padding: 0;
     border-color: blueviolet;
     border-width: 1px;
-    width: 6.25%;
-    height: 6.25%;
+    height: auto;
+    flex-shrink: 0;
+    /* width: 6.25%;
+    height: 6.25%; */
 }
