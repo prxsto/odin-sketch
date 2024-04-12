@@ -1,11 +1,13 @@
 const gridContainer = document.querySelector("#grid-container");
 const newGridButton = document.querySelector("#new-grid-button");
 
+// default values
+let gridContainerSize = "960px";
 let pixelSize = "60px";
 let numPixels = 256;
 
-gridContainer.style.width = "960px";
-gridContainer.style.height = "960px";
+gridContainer.style.width = gridContainerSize;
+gridContainer.style.height = gridContainerSize;
 
 newGridButton.addEventListener("click", (event) => {
   newGridSizeInput = prompt("what size grid?", 60);
