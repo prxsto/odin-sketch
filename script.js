@@ -38,5 +38,3 @@ function createPixelGrid(numPixels, pixelSize) {
 }
 
 createPixelGrid(numPixels, pixelSize);
-
-console.log(gridContainer.children);
