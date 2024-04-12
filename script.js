@@ -1,21 +1,40 @@
-const gridContainer = document.querySelector('#grid-container');
-const vw = Math.max(
-  document.documentElement.clientWidth || 0,
-  window.innerWidth || 0
-);
-const vh = Math.max(
-  document.documentElement.clientHeight || 0,
-  window.innerHeight || 0
-);
+const gridContainer = document.querySelector("#grid-container");
+const newGridButton = document.querySelector("#new-grid-button");
 
-for (let i = 0; i < 256; i++) {
-    let pixel = document.createElement('div');
-    pixel.className = 'pixel';
-    pixel.style.width = vw / 16;
-    pixel.style.height = vh / 16;
+let pixelSize = "60px";
+let numPixels = 256;
+
+gridContainer.style.width = "960px";
+gridContainer.style.height = "960px";
+
+newGridButton.addEventListener("click", (event) => {
+  newGridSizeInput = prompt("what size grid?", 60);
+  newGridSize = newGridSizeInput < 100 ? newGridSizeInput : 100;
+
+  // destroy current grid, rebuilt using newNumPixels
+  newPixelSize = gridContainer.style.width / newGridSize;
+  newPixelNum = newGridSize * newGridSize;
+  gridContainer.replaceChildren();
+  createPixelGrid(newPixelNum, newPixelSize);
+}) 
+
+function createPixelGrid(numPixels, pixelSize) {
+  for (let i = 0; i < numPixels; i++) {
+    let pixel = document.createElement("div");
+    let para = document.createElement("p");
+    para.style.textAlign = "center";
+    para.textContent = i + 1;
+    pixel.className = "pixel";
+    pixel.style.width = pixelSize;
+    pixel.style.height = pixelSize;
+    pixel.addEventListener("mouseover", (_event) => {
+      pixel.className = "pixel hovered";
+    });
+    pixel.appendChild(para);
     gridContainer.appendChild(pixel);
+  }
 }
 
+createPixelGrid(numPixels, pixelSize);
 
 console.log(gridContainer.children);
-console.log(vw / 16, vh / 16);
