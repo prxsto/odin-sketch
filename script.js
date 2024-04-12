@@ -16,22 +16,24 @@ newGridButton.addEventListener("click", (event) => {
   newPixelSize = gridContainer.style.width / newGridSize;
   newPixelNum = newGridSize * newGridSize;
   gridContainer.replaceChildren();
-  createPixelGrid(newPixelNum, newPixelSize);
+  createPixelGrid(newPixelNum, newPixelSize, false);
 }) 
 
-function createPixelGrid(numPixels, pixelSize) {
+function createPixelGrid(numPixels, pixelSize, debug = true) {
   for (let i = 0; i < numPixels; i++) {
     let pixel = document.createElement("div");
-    let para = document.createElement("p");
-    para.style.textAlign = "center";
-    para.textContent = i + 1;
+    if (debug) {
+      let para = document.createElement("p");
+      para.style.textAlign = "center";
+      para.textContent = i + 1;
+      pixel.appendChild(para);
+    }
     pixel.className = "pixel";
     pixel.style.width = pixelSize;
     pixel.style.height = pixelSize;
     pixel.addEventListener("mouseover", (_event) => {
       pixel.className = "pixel hovered";
     });
-    pixel.appendChild(para);
     gridContainer.appendChild(pixel);
   }
 }
