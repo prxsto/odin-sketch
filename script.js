@@ -10,8 +10,7 @@ gridContainer.style.width = gridContainerSize;
 gridContainer.style.height = gridContainerSize;
 
 newGridButton.addEventListener("click", (event) => {
-  newGridSizeInput = prompt("what size grid?", 60);
-  newGridSize = newGridSizeInput < 100 ? newGridSizeInput : 100;
+  newGridSize = math.min(prompt("what size grid?", 60), 100);
 
   // destroy current grid, rebuilt using newNumPixels
   newPixelSize = gridContainer.style.width / newGridSize;
