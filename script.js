@@ -11,8 +11,8 @@ const vh = Math.max(
 for (let i = 0; i < 256; i++) {
     let pixel = document.createElement('div');
     pixel.className = 'pixel';
-    // pixel.style.width = vw / 16;
-    // pixel.style.height = vh / 16;
+    pixel.style.width = vw / 16;
+    pixel.style.height = vh / 16;
     gridContainer.appendChild(pixel);
 }
 
