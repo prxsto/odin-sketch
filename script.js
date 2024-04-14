@@ -24,7 +24,7 @@ newGridButton.addEventListener("click", (_event) => {
   createPixelGrid(newPixelNum, newPixelSize);
 })
 
-function createPixelGrid(numPixels, pixelSize, debug = true) {
+function createPixelGrid(numPixels, pixelSize, debug = false) {
   for (let i = 0; i < numPixels; i++) {
     let pixel = document.createElement("div");
     if (debug) {
@@ -38,10 +38,19 @@ function createPixelGrid(numPixels, pixelSize, debug = true) {
     pixel.style.width = pixelSize;
     pixel.style.height = pixelSize;
     pixel.addEventListener("mouseover", (_event) => {
-      pixel.className = "pixel hovered";
+      let color1 = getRandomInt(0, 257);
+      let color2 = getRandomInt(0, 257);
+      let color3 = getRandomInt(0, 257);
+      pixel.style.backgroundColor = `rgb(${color1} ${color2} ${color3}`;
     });
     gridContainer.appendChild(pixel);
   }
+}
+
+function getRandomInt(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 
 createPixelGrid(pixelNum, pixelSize);
